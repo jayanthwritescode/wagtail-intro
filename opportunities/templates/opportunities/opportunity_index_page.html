@@ -10,10 +10,10 @@
 </section>
 
 <section>
-    <h2>Latest Opportunities</h2>
-    {% if latest_opportunities %}
+    <h2>All Opportunities</h2>
+    {% if opportunities %}
     <div class="card-grid">
-        {% for opportunity in latest_opportunities %}
+        {% for opportunity in opportunities %}
         <article class="card">
             <p class="meta">{{ opportunity.get_opportunity_type_display }} | Deadline: {{ opportunity.deadline }}</p>
             <h3><a href="{% pageurl opportunity %}">{{ opportunity.title }}</a></h3>
@@ -22,8 +22,7 @@
         {% endfor %}
     </div>
     {% else %}
-    <p>No opportunities published yet.</p>
+    <p>No opportunities available right now.</p>
     {% endif %}
 </section>
-
-{% endblock content %}
+{% endblock %}

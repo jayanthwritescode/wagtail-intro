@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<article>
+    <p class="meta">{{ page.get_opportunity_type_display }} | Deadline: {{ page.deadline }}</p>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.summary }}</p>
+
+    {% if page.external_url %}
+    <p><a href="{{ page.external_url }}" target="_blank" rel="noopener noreferrer">Apply / Learn More</a></p>
+    {% endif %}
+
+    {% if page.body %}
+    <div>{{ page.body|richtext }}</div>
+    {% endif %}
+</article>
+{% endblock %}
