@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<section class="hero">
+    <h1>{{ page.title }}</h1>
+    {% if page.intro %}
+    <div class="intro">{{ page.intro|richtext }}</div>
+    {% endif %}
+</section>
+
+<form action="{% pageurl page %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">Submit Opportunity</button>
+</form>
+{% endblock %}

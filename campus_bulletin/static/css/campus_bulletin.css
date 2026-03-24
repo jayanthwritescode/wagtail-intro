@@ -73,3 +73,32 @@ a {
     color: #4b5563;
     margin: 0 0 0.4rem 0;
 }
+
+form {
+    display: grid;
+    gap: 0.8rem;
+    max-width: 680px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+button {
+    width: fit-content;
+    border: 0;
+    border-radius: 6px;
+    background: #0057b8;
+    color: #ffffff;
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+}

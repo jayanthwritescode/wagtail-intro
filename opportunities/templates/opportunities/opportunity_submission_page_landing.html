@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<section class="hero">
+    <h1>Thanks for your submission</h1>
+    {% if page.thank_you_text %}
+    <div class="intro">{{ page.thank_you_text|richtext }}</div>
+    {% else %}
+    <p>We received your opportunity details and will review them soon.</p>
+    {% endif %}
+</section>
+{% endblock %}

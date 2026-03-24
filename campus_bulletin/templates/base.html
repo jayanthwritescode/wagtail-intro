@@ -39,6 +39,11 @@
                 <a class="brand" href="/">Campus Opportunity Bulletin</a>
                 <nav class="site-nav">
                     <a href="/">Home</a>
+                    <a href="/opportunities/">Opportunities</a>
+                    {% slugurl "submit-opportunity" as submit_url %}
+                    {% if submit_url %}
+                    <a href="{{ submit_url }}">Submit</a>
+                    {% endif %}
                     <a href="/search/">Search</a>
                 </nav>
             </div>

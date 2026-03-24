@@ -1,6 +1,8 @@
 from django.db import models
 
-from wagtail.admin.panels import FieldPanel
+from modelcluster.fields import ParentalKey
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.fields import RichTextField
 from wagtail.models import Page
 from wagtail.search import index
@@ -53,4 +55,29 @@ class OpportunityPage(Page):
         index.SearchField("body"),
         index.FilterField("opportunity_type"),
         index.FilterField("deadline"),
+    ]
+
+
+class OpportunitySubmissionFormField(AbstractFormField):
+    page = ParentalKey(
+        "opportunities.OpportunitySubmissionPage",
+        on_delete=models.CASCADE,
+        related_name="form_fields",
+    )
+
+
+class OpportunitySubmissionPage(AbstractEmailForm):
+    intro = RichTextField(blank=True)
+    thank_you_text = RichTextField(blank=True)
+
+    parent_page_types = ["home.HomePage"]
+    subpage_types = []
+
+    content_panels = AbstractEmailForm.content_panels + [
+        FieldPanel("intro"),
+        InlinePanel("form_fields", label="Form fields"),
+        FieldPanel("thank_you_text"),
+        FieldPanel("to_address"),
+        FieldPanel("from_address"),
+        FieldPanel("subject"),
     ]
